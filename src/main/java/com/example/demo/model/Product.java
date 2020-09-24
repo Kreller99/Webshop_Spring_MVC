@@ -2,25 +2,31 @@ package com.example.demo.model;
 
 public class Product {
 
-    private long id;
+    private int id;
     private String name;
     private double price;
     private String description;
 
     public Product(){}
 
-    public Product(long id, String name, double price, String description) {
+    public Product(int id, String name, double price, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
     }
 
-    public long getId() {
+    public Product(String name, double price, String description) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,5 +52,15 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

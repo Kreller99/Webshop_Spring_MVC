@@ -6,6 +6,13 @@ import java.util.List;
 
 public interface ICrudRepo {
 
-    List<Product> readAll();
-    void create(Product product);
+    public List<Product> readAll();
+
+    public boolean create(Product product);
+
+    public Product read(int id);
+
+    public boolean update(Product product);
+
+    public boolean delete(int id);
 }

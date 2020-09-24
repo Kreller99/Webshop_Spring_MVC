@@ -1,4 +1,4 @@
-package com.example.demo.service;
+/*package com.example.demo.service;
 
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepo;
@@ -16,14 +16,14 @@ public class ProductService {
 
     public List<Product> readAll(){
         List<Product> products = new ArrayList<>();
-        for(Product product: productRepo.readAll()){
+        for(Product product: productRepo.readAll(products)){
             products.add(product);
         }
-        return products;
+        return productRepo.readAll(products);
     }
 
 
     public void create(Product product) {
         productRepo.create(product);
     }
-}
+}*/

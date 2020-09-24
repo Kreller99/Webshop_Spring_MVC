@@ -21,11 +21,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="products: ${Product}">
-            <td th:text="${products.id}"></td>
-            <td th:text="${products.name}"></td>
-            <td th:text="${products.price}"></td>
-            <td th:text="${products.description}"></td>
+        <tr th:each="product: ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.description}"></td>
+            <td>
+                <a th:href="@{update(id=@{product.id})}" class="btn btn-primary" role="button">Opdater</a>
+                <a th:href="@{delete(id=@{product.id})}" class="btn btn-primary" role="button">Slet</a>
+            </td>
         </tr>
         </tbody>
     </table>
