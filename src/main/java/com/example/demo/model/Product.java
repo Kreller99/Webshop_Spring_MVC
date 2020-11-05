@@ -10,7 +10,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long idProduct;
 
     public String name;
 
@@ -18,11 +18,16 @@ public class Product {
 
     public String description;
 
+    /*
+    @OneToOne
+    public Company company;
+    */
+
 
     public Product(){}
 
-    public Product(Long id, String name, double price, String description) {
-        this.id = id;
+    public Product(Long idProduct, String name, double price, String description) {
+        this.idProduct = idProduct;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -34,12 +39,12 @@ public class Product {
         this.description = description;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdProduct() {
+        return idProduct;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idProduct) {
+        this.idProduct = idProduct;
     }
 
     public String getName() {
@@ -69,7 +74,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "id=" + idProduct +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +

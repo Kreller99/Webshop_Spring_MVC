@@ -18,18 +18,25 @@ public class HomeController {
     ProductService productService;*/
 
 
-    @Autowired
+
     ProductRepo productRepo;
+
+    public HomeController(ProductRepo productRepo) {this.productRepo = productRepo;}
 
 
     @GetMapping("/")
     public String index(){
-        Iterable<Product> findProducts = productRepo.findAll();
-        return "index";
 
+        for(Product p : productRepo.findAll()){
+            System.out.println(p.getIdProduct());
+            System.out.println(p.getName());
+            System.out.println(p.getPrice());
+            System.out.println(p.getDescription());
+        }
+        return "index";
     }
 
-    @GetMapping("/product/create")
+    /*@GetMapping("/product/create")
     public String getCreate(Product product){
         return "/product/create";
     }
@@ -66,7 +73,7 @@ public class HomeController {
         return "redirect:/";
     }
 
-    //TODO Direct to detailed view of student
+    TODO Direct to detailed view of student
     @GetMapping("/product")
     @ResponseBody
     public String getProductByParameter(@RequestParam int id) {

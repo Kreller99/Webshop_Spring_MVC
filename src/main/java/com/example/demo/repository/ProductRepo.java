@@ -9,6 +9,9 @@ import java.util.List;
 import java.sql.*;
 
 public interface ProductRepo extends CrudRepository<Product, Long> {
+
+
+
     /*private Connection conn;
 
     private List<Product> products = new ArrayList<>();
