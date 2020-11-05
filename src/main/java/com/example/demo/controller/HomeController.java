@@ -9,60 +9,68 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
-
-    private ICrudRepo productRepo;
 
     /*@Autowired
     ProductService productService;*/
 
 
+    @Autowired
+    ProductRepo productRepo;
 
-    public HomeController(){
-        productRepo = new ProductRepo();
-    }
 
     @GetMapping("/")
-    public String index(Model model){
-        model.addAttribute("products", productRepo.readAll());
+    public String index(){
+        Iterable<Product> findProducts = productRepo.findAll();
         return "index";
+
     }
 
-    @GetMapping("/create")
+    @GetMapping("/product/create")
     public String getCreate(Product product){
-        return "create";
+        return "/product/create";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/product/create")
     public String postCreate(Product product){
 
-        productRepo.create(product);
+        productRepo.save(product);
         //productService.create(product);
         return "redirect:/";
     }
 
-    @GetMapping("update")
-    public String getUpdate(/*@PathVariable("id") int id*/@RequestParam int id, Model model){
-       model.addAttribute("updateProduct", productRepo.read(id));
-       return "../update";
+    @GetMapping("/product/update")
+    public String getUpdate(@RequestParam Long id, Model model){
+       model.addAttribute("updateProduct", productRepo.findById(id));
+       return "product/update";
     }
 
-    @PostMapping("update")
+    @PostMapping("/product/update")
     public String postUpdate(Product product){
-        productRepo.update(product);
+        productRepo.save(product);
         return "redirect:/";
     }
 
-    @GetMapping("delete")
+    /*@GetMapping("/product/delete")
     public String getDelete(@RequestParam int id, Model model){
         model.addAttribute("deleteProduct", productRepo.read(id));
-        return "delete";
+        return "/product/delete";
     }
 
-    @PostMapping("delete")
+    @PostMapping("/product/delete")
     public String postDelete(int id){
         productRepo.delete(id);
         return "redirect:/";
     }
+
+    //TODO Direct to detailed view of student
+    @GetMapping("/product")
+    @ResponseBody
+    public String getProductByParameter(@RequestParam int id) {
+        Product pro = productRepo.read(id);
+        return "ID: " + id + " Name: " + pro.name + "";
+    }*/
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Opdater Produkt</h1>
-<form action="#" th:action="@{update}" method="POST">
+<form action="#" th:action="@{/product/update}" method="POST">
     <div class="form-group">
         <label>Navn</label>
         <input class="form-control" type="text" th:field="*{updateProduct.name}">
@@ -24,10 +24,12 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Opdater</button>
     </div>
+    <div class="form-group">
+        <input class="form-control" type="hidden" th:field="*{updateProduct.id}">
+    </div>
 </form>
 
 </body>
-<script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -37,5 +39,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-</script>
 </html>

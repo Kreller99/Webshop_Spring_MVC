@@ -12,11 +12,11 @@
     <h1>Slet produkt</h1>
     <h5>Er du sikker på, at du vil slette: </h5>
     <div>
-        <td th:text="${deleteProduct.getName()}"></td>
+        <td th:text="${deleteProduct.name}"></td>
     </div>
     <br>
     <form th:action="@{delete}" method="POST">
-        <input type="hidden" th:field="${deleteProduct.getId()}">
+        <input type="hidden" th:field="${deleteProduct.id}">
         <button type="submit" class="btn btn-success">Ja</button>
         <a class="btn btn-danger" href="/">Nej</a>
 
@@ -32,5 +32,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-</
 </html>

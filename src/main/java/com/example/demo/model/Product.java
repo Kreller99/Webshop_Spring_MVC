@@ -1,15 +1,27 @@
 package com.example.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table
 public class Product {
 
-    private int id;
-    private String name;
-    private double price;
-    private String description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
+    public String name;
+
+    public double price;
+
+    public String description;
+
 
     public Product(){}
 
-    public Product(int id, String name, double price, String description) {
+    public Product(Long id, String name, double price, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -22,11 +34,11 @@ public class Product {
         this.description = description;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Opret produkt</h1>
-    <form action="#" th:action="@{create}" th:object="${product}" method="POST">
+    <form action="#" th:action="@{product/create}" th:object="${product}" method="POST">
         <div class="form-group">
             <label>Navn:</label>
             <input class="form-control" type="text" th:field="*{name}">
