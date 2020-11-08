@@ -4,6 +4,7 @@ import com.example.demo.model.Product;
 import com.example.demo.repository.ICrudRepo;
 import com.example.demo.repository.ProductRepo;
 //import com.example.demo.service.ProductService;
+import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,47 +18,40 @@ public class HomeController {
     /*@Autowired
     ProductService productService;*/
 
+    ProductService productService;
 
-
-    ProductRepo productRepo;
-
-    public HomeController(ProductRepo productRepo) {this.productRepo = productRepo;}
+    public HomeController(ProductService productService) {this.productService = productService;}
 
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
 
-        for(Product p : productRepo.findAll()){
-            System.out.println(p.getIdProduct());
-            System.out.println(p.getName());
-            System.out.println(p.getPrice());
-            System.out.println(p.getDescription());
-        }
+        model.addAttribute("products", productService.findAll());
         return "index";
     }
 
-    /*@GetMapping("/product/create")
+    @GetMapping("/product/create")
     public String getCreate(Product product){
-        return "/product/create";
+        return "product/create";
     }
 
     @PostMapping("/product/create")
     public String postCreate(Product product){
 
-        productRepo.save(product);
+        productService.create(product);
         //productService.create(product);
         return "redirect:/";
     }
 
     @GetMapping("/product/update")
     public String getUpdate(@RequestParam Long id, Model model){
-       model.addAttribute("updateProduct", productRepo.findById(id));
+       model.addAttribute("updateProduct", productService.findById(id));
        return "product/update";
     }
 
     @PostMapping("/product/update")
     public String postUpdate(Product product){
-        productRepo.save(product);
+        productService.update(product);
         return "redirect:/";
     }
 
@@ -80,4 +74,9 @@ public class HomeController {
         Product pro = productRepo.read(id);
         return "ID: " + id + " Name: " + pro.name + "";
     }*/
+
+    @GetMapping("/h2-console")
+    public String h2Console(){
+        return "/h2-console";
+    }
 }

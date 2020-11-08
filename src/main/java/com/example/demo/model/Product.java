@@ -3,24 +3,47 @@ package com.example.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idProduct;
 
+    @Column(name = "name")
     public String name;
 
+    @Column(name = "price")
     public double price;
 
+    @Column(name = "description")
     public String description;
 
-    /*
+    /*@ManyToMany(mappedBy = "product")
+    public Set<Category> categories;
+
     @OneToOne
     public Company company;
+
+    @OneToOne
+    public CompanyDescription companyDescription;*/
+
+
+    /*
+
+    @OneToOne(fetch = FetchType.LAZY eller FetchType.EAGER, optional = false)
+    @JoinColumn(name = "recipe_id", nullable = false
+    public Recipe recipe;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBY = "recipe")
+    private Set<Ingredient> ingredients;
+
+    @ManyToMany(mappedBy = "recipe")
+    private Set<Category> categories;
+
     */
 
 

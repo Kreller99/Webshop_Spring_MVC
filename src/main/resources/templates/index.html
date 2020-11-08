@@ -8,7 +8,7 @@
     <title>Webshop</title>
 </head>
 <body>
-<h1>Vareliste</h1>
+<h1 style="left: 10px !important; margin-left: 15px !important; margin-top: 5px !important; margin-bottom: 20px !important;">Vareliste</h1>
 <div class="container-fluid">
     <table class="table table-bordered">
         <thead>
@@ -17,18 +17,24 @@
             <th scope="col">Varenavn</th>
             <th scope="col">Pris</th>
             <th scope="col">Beskrivelse</th>
-            <th scope="col"></th>
+            <th scope="col">Kategori</th>
+            <th scope="col">Firma</th>
+            <th scope="col">Firmabeskrivelse</th>
+
         </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${products}">
-            <td th:text="${product.id}"></td>
+            <td th:text="${product.idProduct}"></td>
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.description}"></td>
+            <!--<td th:text="${product.categori}"></td>-->
+            <!--<td th:text="${product.company.name}"></td>
+            <td th:text="${product.companyDescription.description}"></td>-->
             <td>
-                <a th:href="@{/product/update(id=${product.id})}" class="btn btn-primary" role="button">Opdater</a>
-                <a th:href="@{/product/delete(id=${product.id})}" class="btn btn-primary" role="button">Slet</a>
+                <a th:href="@{/product/update(id=${product.idProduct})}" class="btn btn-primary" role="button">Opdater</a>
+                <a th:href="@{/product/delete(id=${product.idProduct})}" class="btn btn-primary" role="button">Slet</a>
             </td>
         </tr>
         </tbody>
@@ -36,6 +42,7 @@
     <a th:href="@{/product/create}" class="btn btn-success" role="button" style="
         margin-bottom: 8px;
     ">Create</a>
+    <a th:href="@{/h2-console}" class = "btn btn-success" role = "button">H2 Console</a>
 </div>
 
 </body>
