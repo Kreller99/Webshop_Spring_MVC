@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "companyDescription")
 public class CompanyDescription {
 
     @Id
@@ -15,8 +14,8 @@ public class CompanyDescription {
     public String descriptionOfCompany;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name ="product_idProduct", nullable = false)
-    public Product product;
+    @JoinColumn(name ="company_idCompany", nullable = false)
+    public Company company;
 
     public CompanyDescription() {
     }
