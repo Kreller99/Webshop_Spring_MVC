@@ -1,0 +1,5 @@
+<!--INSERT INTO company (companyName) VALUES ('Coffee Collective');-->
+<!--INSERT INTO company (companyName) VALUES ('Pickwick');-->
+
+<!--INSERT INTO companyDescription (descriptionOfCompany) VALUES ('Dansk kaffe firma');-->
+<!--INSERT INTO companyDescription (descriptionOfCompany) VALUES ('Internationalt te firma');-->

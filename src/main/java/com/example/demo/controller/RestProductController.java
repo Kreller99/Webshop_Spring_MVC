@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.Set;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class RestProductController {
 
     @Autowired
     ProductRepo productRepo;
