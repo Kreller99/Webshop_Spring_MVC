@@ -1,4 +1,6 @@
 package com.example.demo.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 
@@ -17,12 +19,20 @@ public class CompanyDescription {
     @JoinColumn(name ="company_idCompany", nullable = false)
     public Company company;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_idProduct")
+
+    @JsonBackReference
+    public Product product;
+
+
+
     public CompanyDescription() {
     }
 
-    public CompanyDescription(Long idCompanyDescription, String descriptionOfCompany) {
-        this.idCompanyDescription = idCompanyDescription;
+    public CompanyDescription(String descriptionOfCompany, Product product) {
         this.descriptionOfCompany = descriptionOfCompany;
+        this.product = product;
     }
 
     public CompanyDescription(Long idCompanyDescription) {

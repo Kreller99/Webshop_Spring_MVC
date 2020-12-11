@@ -1,4 +1,6 @@
 package com.example.demo.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,7 +15,8 @@ public class Category {
     @Column(name = "catName")
     public String catName;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    @JsonIgnore
     Set<Product> products;
 
     public Category() {

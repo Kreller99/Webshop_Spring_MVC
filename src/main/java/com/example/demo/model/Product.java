@@ -1,8 +1,11 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,6 +24,21 @@ public class Product {
 
     @Column(name = "description")
     public String description;
+
+    @JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private CompanyDescription companyDescription;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
+    public Set<Company> companies;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_idProduct"),
+            inverseJoinColumns = @JoinColumn(name = "category_idCategory")
+    )
+    public Set<Category> categories = new HashSet<>();
+
 
     /*@ManyToMany(mappedBy = "product")
     public Set<Category> categories;
@@ -49,18 +67,15 @@ public class Product {
 
     public Product(){}
 
-    public Product(Long idProduct, String name, double price, String description) {
-        this.idProduct = idProduct;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-    }
-
     public Product(String name, double price, String description) {
         this.name = name;
         this.price = price;
         this.description = description;
+        this.companies = companies;
+        this.companyDescription = companyDescription;
+        this.categories = categories;
     }
+
 
     public Long getIdProduct() {
         return idProduct;

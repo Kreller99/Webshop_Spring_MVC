@@ -12,8 +12,8 @@ public class Company {
     @Column(name = "companyName")
     public String companyName;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name ="product_idProduct", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="product_idProduct")
     public Product product;
 
     public Company() {

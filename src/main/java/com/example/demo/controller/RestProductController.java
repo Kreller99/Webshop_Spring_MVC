@@ -30,4 +30,17 @@ public class RestProductController {
         }
     }
 
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> update(@PathVariable("id") Long id, @RequestBody Product product){
+
+        Optional<Product> optionalProduct = productRepo.findById(id);
+        if(optionalProduct.isPresent()){
+            return ResponseEntity.status(404).body("{'msg': 'Not found'}");
+        }
+
+        productRepo.save(product);
+
+        return ResponseEntity.status(204).body("{'msg': 'Updated'}");
+    }
+
 }
